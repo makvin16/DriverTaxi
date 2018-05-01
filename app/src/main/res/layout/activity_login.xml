@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:fontFamily="@font/lobster_custom"
+        android:textColor="@color/colorPrimary"
+        android:textSize="40sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp">
+
+        <Button
+            android:onClick="clickSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/sign_in"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/black"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:onClick="clickSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/sign_up"
+            android:background="@color/black"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

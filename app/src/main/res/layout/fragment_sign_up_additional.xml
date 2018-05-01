@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_view_photo"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/avatar"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:layout_marginTop="10dp"/>
+
+            <Button
+                android:id="@+id/btnChangePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:background="@color/colorPrimary"
+                android:text="Изменить фото"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/image_view_animals"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/animals"
+                        android:padding="5dp"
+                        android:background="@color/white"
+                        android:layout_gravity="center"/>
+
+                    <CheckBox
+                        android:id="@+id/checkbox_animals"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/image_view_food"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/food"
+                        android:padding="5dp"
+                        android:background="@color/white"
+                        android:layout_gravity="center"/>
+
+                    <CheckBox
+                        android:id="@+id/checkbox_food"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/image_view_drunk"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/drunk"
+                        android:padding="5dp"
+                        android:background="@color/white"
+                        android:layout_gravity="center"/>
+
+                    <CheckBox
+                        android:id="@+id/checkbox_drunk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/image_view_smoking"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/smoking"
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:background="@color/white"/>
+
+                    <CheckBox
+                        android:id="@+id/checkbox_smoking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/layout_counter"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimary"
+            android:text="Далее"
+            android:layout_marginBottom="20dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/layout_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:src="@drawable/circle_white"
+                android:layout_margin="5dp" />
+
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:src="@drawable/circle_yellow"
+                android:layout_margin="5dp"/>
+
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:src="@drawable/circle_white"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
