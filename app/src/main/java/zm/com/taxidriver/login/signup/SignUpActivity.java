@@ -22,6 +22,7 @@ import zm.com.taxidriver.General;
 import zm.com.taxidriver.R;
 import zm.com.taxidriver.api.ApiService;
 import zm.com.taxidriver.api.Client;
+import zm.com.taxidriver.login.signup.event.AdditionalEvent;
 import zm.com.taxidriver.login.signup.event.MainEvent;
 import zm.com.taxidriver.login.signup.fragment.SignUpAdditionalFragment;
 import zm.com.taxidriver.login.signup.fragment.SignUpCarFragment;
@@ -39,6 +40,8 @@ public class SignUpActivity extends AppCompatActivity {
     private SignUpAdditionalFragment signUpAdditionalFragment;
     private SignUpCarFragment signUpCarFragment;
     private RelativeLayout layoutProgress;
+
+    private String name, surname, phone, email, password;
 
     @Override
     protected void onStart() {
@@ -63,8 +66,8 @@ public class SignUpActivity extends AppCompatActivity {
         signUpMainFragment = new SignUpMainFragment();
         signUpAdditionalFragment = new SignUpAdditionalFragment();
         signUpCarFragment = new SignUpCarFragment();
-//        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, signUpMainFragment).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, signUpAdditionalFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, signUpMainFragment).commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, signUpAdditionalFragment).commit();
 
         layoutProgress = findViewById(R.id.layout_progress);
     }
@@ -107,11 +110,11 @@ public class SignUpActivity extends AppCompatActivity {
 //        if(fragment == ADDITIONAL) replaceFragment(signUpAdditionalFragment);
 //        if(fragment == CAR) replaceFragment(signUpCarFragment);
 //        replaceFragment(signUpAdditionalFragment);
-        Log.d(TAG, event.getName());
-        Log.d(TAG, event.getSurname());
-        Log.d(TAG, event.getPhone());
-        Log.d(TAG, event.getEmail());
-        Log.d(TAG, event.getPassword());
+        name = event.getName();
+        surname = event.getSurname();
+        phone = event.getPhone();
+        email = event.getEmail();
+        password = event.getPassword();
         ApiService api = Client.getApiService();
         Call<PhoneEmail> call = api.apiCheckPhoneEmail(event.getPhone(), event.getEmail());
         call.enqueue(new Callback<PhoneEmail>() {
@@ -132,6 +135,19 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-
+    @Subscribe
+    public void receiverAdditional(AdditionalEvent event) {
+        Log.d(TAG, name);
+        Log.d(TAG, surname);
+        Log.d(TAG, phone);
+        Log.d(TAG, email);
+        Log.d(TAG, password);
+        Log.d(TAG, event.getPhoto());
+        Log.d(TAG, event.isAnimals()+"");
+        Log.d(TAG, event.isFood()+"");
+        Log.d(TAG, event.isDrunk()+"");
+        Log.d(TAG, event.isSmoking()+"");
+        replaceFragment(signUpCarFragment);
+    }
 
 }

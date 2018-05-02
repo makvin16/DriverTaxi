@@ -2,4 +2,9 @@
     <string name="app_name">TaxiDriver</string>
     <string name="sign_up">Регистрация</string>
     <string name="sign_in">Вход</string>
+
+    <string name="info_animals">Можно в автомобиль с животными?</string>
+    <string name="info_food">Можно в автомобиль с едой?</string>
+    <string name="info_drunk">Можно в автомобиль нетрезвым?</string>
+    <string name="info_smoking">Можно в автомобиле курить?</string>
 </resources>
