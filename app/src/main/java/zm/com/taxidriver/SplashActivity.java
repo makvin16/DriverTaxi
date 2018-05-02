@@ -8,7 +8,14 @@ import android.widget.RelativeLayout;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import zm.com.taxidriver.api.ApiService;
+import zm.com.taxidriver.api.Client;
 import zm.com.taxidriver.login.LoginActivity;
+import zm.com.taxidriver.model.ResultColor;
+import zm.com.taxidriver.model.ResultType;
 
 public class SplashActivity extends AppCompatActivity {
     private static final String TAG = SplashActivity.class.getSimpleName();
@@ -24,8 +31,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        timer = new Timer();
         index = 0;
+        timer = new Timer();
         r1 = findViewById(R.id.r1);
         r2 = findViewById(R.id.r2);
         r3 = findViewById(R.id.r3);
@@ -38,11 +45,13 @@ public class SplashActivity extends AppCompatActivity {
         r5.setTag(TAG_BLACK+"");
         initializeTimerTask();
         timer.scheduleAtFixedRate(timerTask, 1000, 1000);
+        apiTypes();
+        apiColors();
     }
 
     private void initializeTimerTask() {
 
-        Thread thread = new Thread() {
+        final Thread thread = new Thread() {
             @Override
             public void run() {
                while (!isInterrupted()) {
@@ -91,7 +100,7 @@ public class SplashActivity extends AppCompatActivity {
                                    r5.setBackgroundColor(getResources().getColor(R.color.black));
                                    r5.setTag(TAG_BLACK+"");
                                }
-                               if(index == 2) {
+                               if(index == 4) {
                                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
 //                                   startActivity(new Intent(SplashActivity.this, TestActivity.class));
                                    finish();
@@ -113,5 +122,47 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         };
+    }
+
+    private void apiTypes() {
+        ApiService api = Client.getApiService();
+        Call<ResultType> call = api.apiGetTypes();
+        call.enqueue(new Callback<ResultType>() {
+            @Override
+            public void onResponse(Call<ResultType> call, Response<ResultType> response) {
+                ResultType result = response.body();
+                if(result == null) {
+                    General.ShowError.show(getApplicationContext(), General.ShowError.API);
+                    return;
+                }
+                General.initTypesDB(result);
+            }
+
+            @Override
+            public void onFailure(Call<ResultType> call, Throwable t) {
+                General.ShowError.show(getApplicationContext(), General.ShowError.CONNECT);
+            }
+        });
+    }
+
+    private void apiColors() {
+        ApiService api = Client.getApiService();
+        Call<ResultColor> call = api.apiGetColors();
+        call.enqueue(new Callback<ResultColor>() {
+            @Override
+            public void onResponse(Call<ResultColor> call, Response<ResultColor> response) {
+                ResultColor result = response.body();
+                if(result == null) {
+                    General.ShowError.show(getApplicationContext(), General.ShowError.API);
+                    return;
+                }
+                General.initColorsDB(result);
+            }
+
+            @Override
+            public void onFailure(Call<ResultColor> call, Throwable t) {
+                General.ShowError.show(getApplicationContext(), General.ShowError.CONNECT);
+            }
+        });
     }
 }
