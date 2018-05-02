@@ -43,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+        if(!EventBus.getDefault().isRegistered(this)) EventBus.getDefault().register(this);
     }
 
     @Override
