@@ -1,24 +1,24 @@
-package zm.com.taxidriver.model;
+package zm.com.taxidriver.model.result;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class ResultColor {
-    @SerializedName("colors")
+public class ResultType {
+    @SerializedName("types")
     @Expose
-    private ArrayList<Color> colors;
+    private ArrayList<Type> types;
 
-    public ArrayList<Color> getColors() {
-        return colors;
+    public ArrayList<Type> getTypes() {
+        return types;
     }
 
-    public void setColors(ArrayList<Color> colors) {
-        this.colors = colors;
+    public void setTypes(ArrayList<Type> types) {
+        this.types = types;
     }
 
-    public class Color {
+    public class Type {
         @SerializedName("id")
         @Expose
         private int id;
@@ -26,10 +26,6 @@ public class ResultColor {
         @SerializedName("name")
         @Expose
         private String name;
-
-        @SerializedName("hex")
-        @Expose
-        private String hex;
 
         public int getId() {
             return id;
@@ -45,14 +41,6 @@ public class ResultColor {
 
         public void setName(String name) {
             this.name = name;
-        }
-
-        public String getHex() {
-            return hex;
-        }
-
-        public void setHex(String hex) {
-            this.hex = hex;
         }
     }
 }

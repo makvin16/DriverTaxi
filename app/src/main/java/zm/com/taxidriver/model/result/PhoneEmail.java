@@ -1,4 +1,4 @@
-package zm.com.taxidriver.model;
+package zm.com.taxidriver.model.result;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -18,22 +18,32 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
+            <Spinner
+                android:id="@+id/spinner_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:theme="@style/AppTheme3">
+            </Spinner>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:textColorHint="@color/white">
 
                 <EditText
-                    android:id="@+id/edit_text_name"
+                    android:id="@+id/edit_text_brand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Имя"
+                    android:hint="Марка"
                     android:textColor="@color/white"
                     android:inputType="textCapSentences"
-                    android:maxLength="15"/>
+                    android:maxLength="20"
+                    android:text="bmw"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -45,13 +55,14 @@
                 android:layout_marginRight="10dp">
 
                 <EditText
-                    android:id="@+id/edit_text_surname"
+                    android:id="@+id/edit_text_model"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Фамилия"
+                    android:hint="Модель"
                     android:textColor="@color/white"
                     android:inputType="textCapSentences"
-                    android:maxLength="20"/>
+                    android:maxLength="20"
+                    android:text="x6"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -63,13 +74,33 @@
                 android:layout_marginRight="10dp">
 
                 <EditText
-                    android:id="@+id/edit_text_phone"
+                    android:id="@+id/edit_text_year"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Номер телефона"
+                    android:hint="Год"
+                    android:textColor="@color/white"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:text="2010"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <EditText
+                    android:id="@+id/edit_text_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Номер"
                     android:textColor="@color/white"
                     android:inputType="textCapSentences"
-                    android:maxLength="12"/>
+                    android:maxLength="15"
+                    android:text="AX7777"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -81,65 +112,32 @@
                 android:layout_marginRight="10dp">
 
                 <EditText
-                    android:id="@+id/edit_text_email"
+                    android:id="@+id/edit_text_passenger"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email"
+                    android:hint="Кол-во пассажирова"
                     android:textColor="@color/white"
-                    android:inputType="textEmailAddress|textCapSentences"
-                    android:maxLength="15"/>
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:text="4"/>
 
             </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/white"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
-
-                <EditText
-                    android:id="@+id/edit_text_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Пароль"
-                    android:textColor="@color/white"
-                    android:inputType="textCapSentences|textPassword"
-                    android:maxLength="15"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/white"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
-
-                <EditText
-                    android:id="@+id/edit_text_password2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Повторите пароль"
-                    android:textColor="@color/white"
-                    android:inputType="textCapSentences|textPassword"
-                    android:maxLength="15"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-            <Button
-                android:id="@+id/btnNext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary"
-                android:text="Далее"
-                android:layout_gravity="center"/>
 
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/layout_counter"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimary"
+            android:text="Далее"
+            android:layout_marginBottom="20dp"/>
+
         <LinearLayout
+            android:id="@+id/layout_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

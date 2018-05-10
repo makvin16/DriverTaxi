@@ -8,14 +8,17 @@ import android.widget.RelativeLayout;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import zm.com.taxidriver.api.ApiService;
 import zm.com.taxidriver.api.Client;
+import zm.com.taxidriver.db.Driver;
 import zm.com.taxidriver.login.LoginActivity;
-import zm.com.taxidriver.model.ResultColor;
-import zm.com.taxidriver.model.ResultType;
+import zm.com.taxidriver.model.result.ResultType;
+import zm.com.taxidriver.start.StartActivity;
 
 public class SplashActivity extends AppCompatActivity {
     private static final String TAG = SplashActivity.class.getSimpleName();
@@ -46,7 +49,6 @@ public class SplashActivity extends AppCompatActivity {
         initializeTimerTask();
         timer.scheduleAtFixedRate(timerTask, 1000, 1000);
         apiTypes();
-        apiColors();
     }
 
     private void initializeTimerTask() {
@@ -101,7 +103,8 @@ public class SplashActivity extends AppCompatActivity {
                                    r5.setTag(TAG_BLACK+"");
                                }
                                if(index == 4) {
-                                   startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                                   if(!isSigned()) startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                                   else startActivity(new Intent(SplashActivity.this, StartActivity.class));
 //                                   startActivity(new Intent(SplashActivity.this, TestActivity.class));
                                    finish();
                                }
@@ -145,24 +148,12 @@ public class SplashActivity extends AppCompatActivity {
         });
     }
 
-    private void apiColors() {
-        ApiService api = Client.getApiService();
-        Call<ResultColor> call = api.apiGetColors();
-        call.enqueue(new Callback<ResultColor>() {
-            @Override
-            public void onResponse(Call<ResultColor> call, Response<ResultColor> response) {
-                ResultColor result = response.body();
-                if(result == null) {
-                    General.ShowError.show(getApplicationContext(), General.ShowError.API);
-                    return;
-                }
-                General.initColorsDB(result);
-            }
-
-            @Override
-            public void onFailure(Call<ResultColor> call, Throwable t) {
-                General.ShowError.show(getApplicationContext(), General.ShowError.CONNECT);
-            }
-        });
+    private boolean isSigned() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        RealmResults<Driver> d = realm.where(Driver.class).findAll();
+        realm.commitTransaction();
+        if(d.isEmpty()) return false;
+        return true;
     }
 }

@@ -7,4 +7,7 @@
     <string name="info_food">Можно в автомобиль с едой?</string>
     <string name="info_drunk">Можно в автомобиль нетрезвым?</string>
     <string name="info_smoking">Можно в автомобиле курить?</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
